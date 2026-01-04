@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput;
     public float jumpForce = 4f;
     public float moveSpeed = 5f;
-    bool isFacingRight = false;
+    public bool isFacingRight = false;
     bool isGrounded = false;
     Animator animator;
     Rigidbody2D rb;
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new UnityEngine.Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
     }
 
     void FlipSprite()
