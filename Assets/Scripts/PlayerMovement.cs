@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Keyboard.current.wKey.wasPressedThisFrame && isGrounded)
         {
-            rb.linearVelocity = new UnityEngine.Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            animator.SetTrigger("Jump");
         }
         horizontalInput = Keyboard.current.aKey.isPressed ? -1 : Keyboard.current.dKey.isPressed ? 1 : 0;
         if (Keyboard.current.aKey.isPressed)
