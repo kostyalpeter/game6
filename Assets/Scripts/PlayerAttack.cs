@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +10,11 @@ public class PlayerAttack : MonoBehaviour
     public GameObject arrow;
     public Vector3 offset1;
     public Vector3 offset2;
-
+    public float timer;
+    public float time = 3;
+    public bool CoolDown = false;
+    public bool canHit = false;
+    public CircleCollider2D HitArea;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,7 +22,15 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (timer >= 0)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer >= time)
+        {
+            CoolDown = true;
+        }
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown == true)
         {
             animator.SetTrigger("Attack");
         }
@@ -29,16 +42,37 @@ public class PlayerAttack : MonoBehaviour
     public void SpawnArrow()
     {
         Vector3 spawnPos;
-
-        if (playerMovement.isFacingRight == true)
+        if (CoolDown == true)
         {
-            spawnPos = transform.position + offset2;
+            if (playerMovement.isFacingRight == true)
+            {
+                spawnPos = transform.position + offset2;
+                CoolDown = false;
+                timer = 0;
+            }
+            else
+            {
+                spawnPos = transform.position + offset1;
+                CoolDown = false;
+                timer = 0;
+            }
+            GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
+            a.GetComponent<Arrow>().SetDirection(playerMovement.isFacingRight);
         }
-        else
+    }
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player2") && canHit == true)
         {
-            spawnPos = transform.position + offset1;
+            PlayerHealth.currentHealth -= 10;
         }
-        GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
-        a.GetComponent<Arrow>().SetDirection(playerMovement.isFacingRight);
+    }
+    public void CanHit()
+    {
+        canHit = true;
+    }
+    public void CanHitOff()
+    {
+        canHit = false;
     }
 }

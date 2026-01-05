@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wall
+  - Player1
+  - Player2
+  - Grond
   layers:
   - Default
   - TransparentFX

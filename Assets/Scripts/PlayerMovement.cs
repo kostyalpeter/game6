@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
@@ -6,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 4f;
     public float moveSpeed = 5f;
     public bool isFacingRight = false;
-    bool isGrounded = false;
+    public bool isGrounded = false;
     Animator animator;
     Rigidbody2D rb;
 
@@ -61,10 +62,16 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        isGrounded = true;
+        if (CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        isGrounded = false;
+        if (CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }
