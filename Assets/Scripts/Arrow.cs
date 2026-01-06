@@ -29,6 +29,14 @@ public class Arrow : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+        if (collision.gameObject.GetComponent<PlayerHealth1>())
+        {
+            collision.gameObject.GetComponent<PlayerHealth1>().TakeDamage();
+        }
+        if (collision.gameObject.GetComponent<PlayerHealth2>())
+        {
+            collision.gameObject.GetComponent<PlayerHealth2>().TakeDamage();
+        }
     }
 
     public void SetDirection(bool isFacingRight)

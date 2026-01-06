@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,14 +11,21 @@ public class PlayerAttack1 : MonoBehaviour
     public Vector3 offset2;
     public float timer;
     public float time = 3;
-    public bool CoolDown = false;
-    public bool canHit = false;
+    public bool CoolDown1 = false;
+    public bool canHit1 = false;
     public CircleCollider2D HitArea;
     void Start()
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement1>();
         player = GetComponent<PlayerType>();
+
+        if(player.playerType == PlayerType.PlayerTypes.Charachter1)
+        {
+            PlayerHealth2.damage = 10;
+            playerMovement.moveSpeed = 5f;
+            playerMovement.jumpForce = 7f;
+        }
     }
     void Update()
     {
@@ -29,48 +35,48 @@ public class PlayerAttack1 : MonoBehaviour
         }
         if (timer >= time)
         {
-            CoolDown = true;
+            CoolDown1 = true;
         }
-        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown == true)
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true)
         {
             animator.SetTrigger("Attack");
         }
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             animator.SetTrigger("Attack2");
-            canHit = true;
+            canHit1 = true;
         }
         if (Keyboard.current.cKey.wasReleasedThisFrame)
         {
-            canHit = false;
+            canHit1 = false;
         }
     }
     public void SpawnArrow()
     {
         Vector3 spawnPos;
-        if (CoolDown == true)
+        if (CoolDown1== true)
         {
-            if (playerMovement.isFacingRight == true)
+            if (playerMovement.isFacingRight1 == true)
             {
                 spawnPos = transform.position + offset2;
-                CoolDown = false;
+                CoolDown1 = false;
                 timer = 0;
             }
             else
             {
                 spawnPos = transform.position + offset1;
-                CoolDown = false;
+                CoolDown1 = false;
                 timer = 0;
             }
             GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
-            a.GetComponent<Arrow>().SetDirection(playerMovement.isFacingRight);
+            a.GetComponent<Arrow>().SetDirection(playerMovement.isFacingRight1);
         }
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player2") && canHit == true && timer >= 1)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1)
         {
-            PlayerHealth1.currentHealth -= 10;
+            other.gameObject.GetComponent<PlayerHealth2>().TakeDamage();
             timer = 0;
         }
     }

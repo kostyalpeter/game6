@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,14 @@ public class PlayerAttack2 : MonoBehaviour
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement2>();
         player = GetComponent<PlayerType>();
+
+        if (player.playerType == PlayerType.PlayerTypes.Charachter1)
+        {
+            PlayerHealth1.damage = 10;
+            playerMovement.moveSpeed = 5f;
+            playerMovement.jumpForce = 7f;
+        }
+
     }
     void Update()
     {
@@ -31,16 +38,16 @@ public class PlayerAttack2 : MonoBehaviour
         {
             CoolDown = true;
         }
-        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown == true)
+        if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true)
         {
             animator.SetTrigger("Attack");
         }
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        if (Keyboard.current.periodKey.wasPressedThisFrame)
         {
             animator.SetTrigger("Attack2");
             canHit = true;
         }
-        if (Keyboard.current.cKey.wasReleasedThisFrame)
+        if (Keyboard.current.periodKey.wasReleasedThisFrame)
         {
             canHit = false;
         }
@@ -68,9 +75,9 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player2") && canHit == true && timer >= 1)
+        if (other.CompareTag("Player1") && canHit == true && timer >= 1)
         {
-            PlayerHealth2.currentHealth -= 10;
+            other.gameObject.GetComponent<PlayerHealth1>().TakeDamage();
             timer = 0;
         }
     }

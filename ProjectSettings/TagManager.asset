@@ -7,7 +7,7 @@ TagManager:
   - Wall
   - Player1
   - Player2
-  - Grond
+  - Ground
   layers:
   - Default
   - TransparentFX

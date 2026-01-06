@@ -6,7 +6,7 @@ public class PlayerMovement1 : MonoBehaviour
     public float horizontalInput;
     public float jumpForce = 4f;
     public float moveSpeed = 5f;
-    public bool isFacingRight = false;
+    public bool isFacingRight1 = false;
     public bool isGrounded = false;
     Animator animator;
     Rigidbody2D rb;
@@ -51,9 +51,9 @@ public class PlayerMovement1 : MonoBehaviour
 
     void FlipSprite()
     {
-        if (isFacingRight && horizontalInput > 0f || !isFacingRight && horizontalInput < 0f)
+        if (isFacingRight1 && horizontalInput > 0f || !isFacingRight1 && horizontalInput < 0f)
         {
-            isFacingRight = !isFacingRight;
+            isFacingRight1 = !isFacingRight1;
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
@@ -62,14 +62,14 @@ public class PlayerMovement1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
