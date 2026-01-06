@@ -1,11 +1,11 @@
-using System.Security.Cryptography;
-using Unity.VisualScripting;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack2 : MonoBehaviour
 {
-    PlayerMovement playerMovement;
+    PlayerMovement2 playerMovement;
+    PlayerType player;
     Animator animator;
     public GameObject arrow;
     public Vector3 offset1;
@@ -18,7 +18,8 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement2>();
+        player = GetComponent<PlayerType>();
     }
     void Update()
     {
@@ -37,6 +38,11 @@ public class PlayerAttack : MonoBehaviour
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             animator.SetTrigger("Attack2");
+            canHit = true;
+        }
+        if (Keyboard.current.cKey.wasReleasedThisFrame)
+        {
+            canHit = false;
         }
     }
     public void SpawnArrow()
@@ -62,17 +68,10 @@ public class PlayerAttack : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player2") && canHit == true)
+        if (other.CompareTag("Player2") && canHit == true && timer >= 1)
         {
-            PlayerHealth.currentHealth -= 10;
+            PlayerHealth2.currentHealth -= 10;
+            timer = 0;
         }
-    }
-    public void CanHit()
-    {
-        canHit = true;
-    }
-    public void CanHitOff()
-    {
-        canHit = false;
     }
 }

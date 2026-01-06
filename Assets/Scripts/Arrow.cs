@@ -2,13 +2,17 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    public float horizontalInput;
+    public float horizontalInput1;
+    public float horizontalInput2;
     private float direction = -1f;
-    PlayerAttack playerAttack;
-
+    PlayerAttack1 playerAttack1;
+    PlayerAttack2 playerAttack2;
+    PlayerType player;
     void Start()
     {
-        playerAttack = FindAnyObjectByType<PlayerAttack>();
+        playerAttack1 = FindAnyObjectByType<PlayerAttack1>();
+        playerAttack2 = FindAnyObjectByType<PlayerAttack2>();
+        player = GetComponent<PlayerType>();
     }
     void Update()
     {
@@ -21,6 +25,10 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 
     public void SetDirection(bool isFacingRight)
