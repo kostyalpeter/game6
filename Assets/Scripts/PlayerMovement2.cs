@@ -1,6 +1,8 @@
-using Unity.VisualScripting;
+using Unity.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 public class PlayerMovement2 : MonoBehaviour
 {
     public float horizontalInput;
@@ -8,6 +10,7 @@ public class PlayerMovement2 : MonoBehaviour
     public float moveSpeed = 5f;
     public bool isFacingRight = false;
     public bool isGrounded = false;
+    public Vector3 offset;
     Animator animator;
     Rigidbody2D rb;
 

@@ -5,15 +5,6 @@ public class Arrow : MonoBehaviour
     public float horizontalInput1;
     public float horizontalInput2;
     private float direction = -1f;
-    PlayerAttack1 playerAttack1;
-    PlayerAttack2 playerAttack2;
-    PlayerType player;
-    void Start()
-    {
-        playerAttack1 = FindAnyObjectByType<PlayerAttack1>();
-        playerAttack2 = FindAnyObjectByType<PlayerAttack2>();
-        player = GetComponent<PlayerType>();
-    }
     void Update()
     {
         transform.position += Vector3.right * direction * speed * Time.deltaTime;
