@@ -22,7 +22,15 @@ public class PlayerAttack1 : MonoBehaviour
 
         if(player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
-            PlayerHealth2.damage = 10;
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 5f;
+            playerMovement.jumpForce = 7f;
+        }
+        if(player.playerType == PlayerType.PlayerTypes.Charachter2)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
         }
@@ -69,14 +77,14 @@ public class PlayerAttack1 : MonoBehaviour
                 timer = 0;
             }
             GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
-            a.GetComponent<Arrow>().SetDirection(playerMovement.isFacingRight1);
+            a.GetComponent<Shoot>().SetDirection(playerMovement.isFacingRight1);
         }
     }
     public void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1)
         {
-            other.gameObject.GetComponent<PlayerHealth2>().TakeDamage();
+            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;
         }
     }

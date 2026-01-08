@@ -5,7 +5,8 @@ public class PlayerHealth2 : MonoBehaviour
 {
     public int maxHealth = 100;
     public static int currentHealth;
-    public static int damage;
+    public static int Meleedamage;
+    public static int Shotdamage;
     public Slider Health;
     Animator animator;
 
@@ -26,10 +27,14 @@ public class PlayerHealth2 : MonoBehaviour
         }
 
     }
-    public void TakeDamage()
+    public void MeleeDamage()
     {
-        currentHealth -= damage;
+        currentHealth -= Meleedamage;
         animator.SetTrigger("Hit");
     }
-
+    public void ShotDamage()
+    {
+        currentHealth -= Shotdamage;
+        animator.SetTrigger("Hit");
+    }
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Arrow : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     public float horizontalInput1;
@@ -22,11 +22,11 @@ public class Arrow : MonoBehaviour
         Destroy(gameObject);
         if (collision.gameObject.GetComponent<PlayerHealth1>())
         {
-            collision.gameObject.GetComponent<PlayerHealth1>().TakeDamage();
+            collision.gameObject.GetComponent<PlayerHealth1>().ShotDamage();
         }
         if (collision.gameObject.GetComponent<PlayerHealth2>())
         {
-            collision.gameObject.GetComponent<PlayerHealth2>().TakeDamage();
+            collision.gameObject.GetComponent<PlayerHealth2>().ShotDamage();
         }
     }
 
