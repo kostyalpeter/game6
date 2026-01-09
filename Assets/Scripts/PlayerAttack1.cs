@@ -6,7 +6,7 @@ public class PlayerAttack1 : MonoBehaviour
     PlayerMovement1 playerMovement;
     PlayerType player;
     Animator animator;
-    public GameObject arrow;
+    public GameObject shot;
     public Vector3 offset1;
     public Vector3 offset2;
     public float timer;
@@ -20,14 +20,14 @@ public class PlayerAttack1 : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement1>();
         player = GetComponent<PlayerType>();
 
-        if(player.playerType == PlayerType.PlayerTypes.Charachter1)
+        if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             PlayerHealth2.Meleedamage = 10;
             PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
         }
-        if(player.playerType == PlayerType.PlayerTypes.Charachter2)
+        if (player.playerType == PlayerType.PlayerTypes.Charachter2)
         {
             PlayerHealth2.Meleedamage = 10;
             PlayerHealth2.Shotdamage = 10;
@@ -62,7 +62,7 @@ public class PlayerAttack1 : MonoBehaviour
     public void SpawnArrow()
     {
         Vector3 spawnPos;
-        if (CoolDown1== true)
+        if (CoolDown1 == true)
         {
             if (playerMovement.isFacingRight1 == true)
             {
@@ -76,16 +76,22 @@ public class PlayerAttack1 : MonoBehaviour
                 CoolDown1 = false;
                 timer = 0;
             }
-            GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
+            GameObject a = Instantiate(shot, spawnPos, transform.rotation);
             a.GetComponent<Shoot>().SetDirection(playerMovement.isFacingRight1);
         }
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;
+        }
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType == PlayerType.PlayerTypes.Charachter2)
+        {
+            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            timer = 0;
+            Debug.Log("asd");
         }
     }
 }

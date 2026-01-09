@@ -20,7 +20,7 @@ public class PlayerHealth1 : MonoBehaviour
     {
         Health.maxValue = maxHealth;
         Health.value = currentHealth;
-
+        
         if(currentHealth == 0)
         {
             animator.SetTrigger("Die");
