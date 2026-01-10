@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class PlayerAttack1 : MonoBehaviour
 {
     PlayerMovement1 playerMovement;
     PlayerType player;
+    Reverse reverse;
     Animator animator;
     public GameObject shot;
     public Vector3 offset1;
@@ -14,11 +16,15 @@ public class PlayerAttack1 : MonoBehaviour
     public bool CoolDown1 = false;
     public bool canHit1 = false;
     public CircleCollider2D HitArea;
+    PlayerMovement1 playerMovement1;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement1>();
         player = GetComponent<PlayerType>();
+        reverse = GetComponent<Reverse>();
+        playerMovement1 = GetComponent<PlayerMovement1>();
 
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
@@ -58,6 +64,10 @@ public class PlayerAttack1 : MonoBehaviour
         {
             canHit1 = false;
         }
+        if (timer >= 3)
+        {
+            Reverse.reverse = false;
+        }
     }
     public void SpawnArrow()
     {
@@ -87,9 +97,16 @@ public class PlayerAttack1 : MonoBehaviour
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;
         }
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType == PlayerType.PlayerTypes.Charachter2)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && playerMovement1.isGrounded && player.playerType == PlayerType.PlayerTypes.Charachter2)
         {
-            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            if (Reverse.reverse == true)
+            {
+                Reverse.reverse = false;
+            }
+            else
+            {
+                Reverse.reverse = true;
+            }
             timer = 0;
             Debug.Log("asd");
         }

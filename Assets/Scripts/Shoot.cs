@@ -5,9 +5,23 @@ public class Shoot : MonoBehaviour
     public float horizontalInput1;
     public float horizontalInput2;
     private float direction = -1f;
-    void Update()
+    Reverse reverse;
+    public void Start()
     {
-        transform.position += Vector3.right * direction * speed * Time.deltaTime;
+        reverse = GetComponent<Reverse>();
+    }
+    public void Update()
+    {
+        if (Reverse.reverse == false)
+        {
+            transform.position += Vector3.right * direction * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0f, 0, 0f);
+        }
+        if (Reverse.reverse == true)
+        {
+            transform.position += Vector3.left * direction * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(0f, 0, 180f);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
