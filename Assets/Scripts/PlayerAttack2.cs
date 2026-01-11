@@ -27,6 +27,20 @@ public class PlayerAttack2 : MonoBehaviour
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter1)
+        {
+            PlayerHealth1.Meleedamage = 10;
+            PlayerHealth1.Shotdamage = 10;
+            playerMovement.moveSpeed = 5f;
+            playerMovement.jumpForce = 7f;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
 
     }
     void Update()
@@ -52,6 +66,10 @@ public class PlayerAttack2 : MonoBehaviour
         {
             canHit = false;
         }
+        if (timer >= 3)
+        {
+            Reverse.reverse = false;
+        }
     }
     public void SpawnArrow()
     {
@@ -76,10 +94,23 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player1") && canHit == true && timer >= 1)
+        if (other.GetComponent<PlayerHealth1>() && canHit == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2)
         {
             other.gameObject.GetComponent<PlayerHealth1>().MeleeDamage();
             timer = 0;
+        }
+        if (other.GetComponent<PlayerHealth1>() && canHit == true && timer >= 15 && playerMovement.isGrounded && player.playerType == PlayerType.PlayerTypes.Charachter2)
+        {
+            if (Reverse.reverse == true)
+            {
+                Reverse.reverse = false;
+            }
+            else
+            {
+                Reverse.reverse = true;
+            }
+            timer = 0;
+            Debug.Log("asd");
         }
     }
 }

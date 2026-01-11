@@ -8,7 +8,7 @@ public class PlayerMovement2 : MonoBehaviour
     public float horizontalInput;
     public float jumpForce = 4f;
     public float moveSpeed = 5f;
-    public bool isFacingRight = false;
+    public bool isFacingRight = true;
     public bool isGrounded = false;
     public Vector3 offset;
     Animator animator;

@@ -16,7 +16,7 @@ public class PlayerAttack1 : MonoBehaviour
     public bool CoolDown1 = false;
     public bool canHit1 = false;
     public CircleCollider2D HitArea;
-    PlayerMovement1 playerMovement1;
+    public bool Sprint = false;
 
     void Start()
     {
@@ -24,7 +24,6 @@ public class PlayerAttack1 : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement1>();
         player = GetComponent<PlayerType>();
         reverse = GetComponent<Reverse>();
-        playerMovement1 = GetComponent<PlayerMovement1>();
 
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
@@ -39,6 +38,13 @@ public class PlayerAttack1 : MonoBehaviour
             PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
         }
     }
     void Update()
@@ -59,6 +65,7 @@ public class PlayerAttack1 : MonoBehaviour
         {
             animator.SetTrigger("Attack2");
             canHit1 = true;
+            Sprint = true;
         }
         if (Keyboard.current.cKey.wasReleasedThisFrame)
         {
@@ -67,6 +74,16 @@ public class PlayerAttack1 : MonoBehaviour
         if (timer >= 3)
         {
             Reverse.reverse = false;
+        }
+        if (timer >= 4 && Sprint == true)
+        {
+            animator.SetTrigger("Stop");
+            playerMovement.moveSpeed = 6f;
+        }
+        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            timer = 0;
+            playerMovement.moveSpeed = 7f;
         }
     }
     public void SpawnArrow()
@@ -90,14 +107,24 @@ public class PlayerAttack1 : MonoBehaviour
             a.GetComponent<Shoot>().SetDirection(playerMovement.isFacingRight1);
         }
     }
+
+    public void Hit()
+    {
+        if (CoolDown1 == true)
+        {
+            CoolDown1 = false;
+            timer = 2;
+        }
+
+    }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;
         }
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && playerMovement1.isGrounded && player.playerType == PlayerType.PlayerTypes.Charachter2)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 15 && playerMovement.isGrounded && player.playerType == PlayerType.PlayerTypes.Charachter2)
         {
             if (Reverse.reverse == true)
             {
@@ -110,5 +137,8 @@ public class PlayerAttack1 : MonoBehaviour
             timer = 0;
             Debug.Log("asd");
         }
+    }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
     }
 }
