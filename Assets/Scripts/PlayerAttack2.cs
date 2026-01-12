@@ -6,7 +6,7 @@ public class PlayerAttack2 : MonoBehaviour
     PlayerMovement2 playerMovement;
     PlayerType player;
     Animator animator;
-    public GameObject arrow;
+    public GameObject shot;
     public Vector3 offset1;
     public Vector3 offset2;
     public float timer;
@@ -15,6 +15,7 @@ public class PlayerAttack2 : MonoBehaviour
     public bool canHit = false;
     public CircleCollider2D HitArea;
     public bool Sprint = false;
+    public bool Hitting = false;
 
     void Start()
     {
@@ -57,6 +58,11 @@ public class PlayerAttack2 : MonoBehaviour
         if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true)
         {
             animator.SetTrigger("Attack");
+        }
+        if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            animator.SetTrigger("Attack");
+            canHit = true;
         }
         if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3)
         {
@@ -108,16 +114,8 @@ public class PlayerAttack2 : MonoBehaviour
                 CoolDown = false;
                 timer = 0;
             }
-            GameObject a = Instantiate(arrow, spawnPos, transform.rotation);
+            GameObject a = Instantiate(shot, spawnPos, transform.rotation);
             a.GetComponent<Shoot>().SetDirection(playerMovement.isFacingRight);
-        }
-    }
-    public void Hit()
-    {
-        if (CoolDown == true)
-        {
-            CoolDown = false;
-            timer = 2;
         }
     }
     public void OnTriggerStay2D(Collider2D other)
@@ -140,12 +138,18 @@ public class PlayerAttack2 : MonoBehaviour
             timer = 0;
             Debug.Log("asd");
         }
+        if (other.GetComponent<PlayerHealth1>() && canHit == true && timer >= 3 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            other.gameObject.GetComponent<PlayerHealth1>().MeleeDamage();
+            canHit = false;
+            timer = 1;
+        }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (Sprint == true && other.GetComponent<PlayerHealth1>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            other.gameObject.GetComponent<PlayerHealth1>().ShotDamage();
+            PlayerHealth1.currentHealth -= 10;
             timer = 4;
         }
     }

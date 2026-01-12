@@ -60,6 +60,11 @@ public class PlayerAttack1 : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            animator.SetTrigger("Attack");
+            canHit1 = true;
+        }
         if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3)
         {
             canHit1 = true;
@@ -114,14 +119,6 @@ public class PlayerAttack1 : MonoBehaviour
             a.GetComponent<Shoot>().SetDirection(playerMovement.isFacingRight1);
         }
     }
-    public void Hit()
-    {
-        if (CoolDown1 == true)
-        {
-            CoolDown1 = false;
-            timer = 2;
-        }
-    }
     public void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3)
@@ -142,16 +139,18 @@ public class PlayerAttack1 : MonoBehaviour
             timer = 0;
             Debug.Log("asd");
         }
-        if (other.GetComponent<PlayerHealth2>() && CoolDown1 == true && timer >= 3 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 3 && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            canHit1 = false;
+            timer = 1;
         }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            other.gameObject.GetComponent<PlayerHealth2>().ShotDamage();
+            PlayerHealth2.currentHealth -= 10;
             timer = 4;
         }
     }
