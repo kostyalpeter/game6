@@ -44,6 +44,13 @@ public class PlayerAttack2 : MonoBehaviour
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter4)
+        {
+            PlayerHealth1.Meleedamage = 10;
+            PlayerHealth1.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
     }
     void Update()
     {
