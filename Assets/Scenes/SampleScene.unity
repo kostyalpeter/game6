@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aa284bd749ffd40a64df2c302567d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack2
-  arrow: {fileID: 3358323355634715903, guid: 66ceffeba7a5b4748bfde259533b0c05, type: 3}
+  shot: {fileID: 3358323355634715903, guid: 66ceffeba7a5b4748bfde259533b0c05, type: 3}
   offset1: {x: 0.7, y: 0, z: 0}
   offset2: {x: -0.7, y: 0, z: 0}
   timer: 15
@@ -371,6 +371,7 @@ MonoBehaviour:
   canHit: 0
   HitArea: {fileID: 245617761}
   Sprint: 0
+  Hitting: 0
 --- !u!114 &245617760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aa284bd749ffd40a64df2c302567d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack2
-  arrow: {fileID: 1627813564440210178, guid: 912a73a97c79fa948a87f676a5d5e13c, type: 3}
+  shot: {fileID: 1627813564440210178, guid: 912a73a97c79fa948a87f676a5d5e13c, type: 3}
   offset1: {x: 0.7, y: 0, z: 0}
   offset2: {x: -0.7, y: 0, z: 0}
   timer: 3
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   canHit: 0
   HitArea: {fileID: 836905523}
   Sprint: 0
+  Hitting: 0
 --- !u!61 &836905535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1610,7 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aa284bd749ffd40a64df2c302567d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack2
-  arrow: {fileID: 0}
+  shot: {fileID: 0}
   offset1: {x: 0, y: 0, z: 0}
   offset2: {x: 0, y: 0, z: 0}
   timer: 14
@@ -1619,6 +1621,7 @@ MonoBehaviour:
   canHit: 0
   HitArea: {fileID: 1271574051}
   Sprint: 0
+  Hitting: 0
 --- !u!95 &1271574050
 Animator:
   serializedVersion: 7

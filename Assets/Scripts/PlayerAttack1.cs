@@ -56,7 +56,7 @@ public class PlayerAttack1 : MonoBehaviour
         {
             CoolDown1 = true;
         }
-        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true)
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3)
         {
             animator.SetTrigger("Attack");
         }
@@ -68,6 +68,7 @@ public class PlayerAttack1 : MonoBehaviour
         if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3)
         {
             canHit1 = true;
+            animator.SetTrigger("Attack2");
         }
         if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
@@ -150,7 +151,7 @@ public class PlayerAttack1 : MonoBehaviour
     {
         if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            PlayerHealth2.currentHealth -= 10;
+            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 4;
         }
     }
