@@ -59,6 +59,13 @@ public class PlayerAttack1 : MonoBehaviour
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter6)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
     }
     void Update()
     {
@@ -70,7 +77,7 @@ public class PlayerAttack1 : MonoBehaviour
         {
             CoolDown1 = true;
         }
-        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3)
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             animator.SetTrigger("Attack");
         }
@@ -79,12 +86,26 @@ public class PlayerAttack1 : MonoBehaviour
             animator.SetTrigger("Attack");
             canHit1 = true;
         }
-        if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3)
+        if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
+        {
+            animator.SetTrigger("Attack");
+            canHit1 = true;
+        }
+        if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             canHit1 = true;
             animator.SetTrigger("Attack2");
         }
         if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            if (timer >= 14)
+            {
+                animator.SetTrigger("Attack2");
+                canHit1 = true;
+                Sprint = true;
+            }
+        }
+        if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
             if (timer >= 14)
             {
@@ -108,6 +129,11 @@ public class PlayerAttack1 : MonoBehaviour
             Sprint = false;
         }
         if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            timer = 0;
+            playerMovement.moveSpeed = 7f;
+        }
+        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
             timer = 0;
             playerMovement.moveSpeed = 7f;
@@ -136,7 +162,7 @@ public class PlayerAttack1 : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3)
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;
@@ -160,10 +186,21 @@ public class PlayerAttack1 : MonoBehaviour
             canHit1 = false;
             timer = 1;
         }
+        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 3 && player.playerType == PlayerType.PlayerTypes.Charachter6)
+        {
+            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            canHit1 = false;
+            timer = 1;
+        }
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            timer = 4;
+        }
+        if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 4;
