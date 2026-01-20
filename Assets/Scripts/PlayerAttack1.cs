@@ -66,6 +66,13 @@ public class PlayerAttack1 : MonoBehaviour
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter7)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
     }
     void Update()
     {
@@ -204,6 +211,14 @@ public class PlayerAttack1 : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 4;
+        }
+    }
+    public void Heal()
+    {
+        if(timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter7 && PlayerHealth1.currentHealth != 100)
+        {
+            PlayerHealth1.currentHealth += 20;
+            timer = 0;
         }
     }
 }
