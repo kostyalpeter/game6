@@ -49,7 +49,6 @@ public class PlayerHealth1 : MonoBehaviour
 
             }
         }
-
     }
     public void ShotDamage()
     {

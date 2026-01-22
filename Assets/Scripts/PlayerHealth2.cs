@@ -9,11 +9,15 @@ public class PlayerHealth2 : MonoBehaviour
     public static int Shotdamage;
     public Slider Health;
     Animator animator;
+    PlayerAttack2 playerAttack2;
+    PlayerType player;
 
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        playerAttack2 = GetComponent<PlayerAttack2>();
+        player = GetComponent<PlayerType>();
     }
 
     void Update()
@@ -25,16 +29,45 @@ public class PlayerHealth2 : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
-
     }
     public void MeleeDamage()
     {
-        currentHealth -= Meleedamage;
-        animator.SetTrigger("Hit");
+        if (player.playerType != PlayerType.PlayerTypes.Charachter10)
+        {
+            currentHealth -= Meleedamage;
+            animator.SetTrigger("Hit");
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+        {
+            if (playerAttack2.Defense == false)
+            {
+                currentHealth -= Meleedamage;
+                animator.SetTrigger("Hit");
+            }
+            if (playerAttack2.Defense == true)
+            {
+
+            }
+        }
     }
     public void ShotDamage()
     {
-        currentHealth -= Shotdamage;
-        animator.SetTrigger("Hit");
+        if (player.playerType != PlayerType.PlayerTypes.Charachter10)
+        {
+            currentHealth -= Shotdamage;
+            animator.SetTrigger("Hit");
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+        {
+            if (playerAttack2.Defense == false)
+            {
+                currentHealth -= Shotdamage;
+                animator.SetTrigger("Hit");
+            }
+            if (playerAttack2.Defense == true)
+            {
+
+            }
+        }
     }
 }

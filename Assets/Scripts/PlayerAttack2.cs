@@ -108,6 +108,11 @@ public class PlayerAttack2 : MonoBehaviour
         if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             animator.SetTrigger("Attack");
+            if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+            {
+                Defense = true;
+                timer = 0;
+            }
         }
         if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
@@ -165,6 +170,10 @@ public class PlayerAttack2 : MonoBehaviour
         {
             timer = 0;
             playerMovement.moveSpeed = 7f;
+        }
+        if (timer >= 1)
+        {
+            Defense = false;
         }
     }
     public void SpawnArrow()

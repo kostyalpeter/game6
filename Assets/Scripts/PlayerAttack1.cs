@@ -110,7 +110,7 @@ public class PlayerAttack1 : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             animator.SetTrigger("Attack");
-            if(player.playerType != PlayerType.PlayerTypes.Charachter10)
+            if(player.playerType == PlayerType.PlayerTypes.Charachter10)
             {
                 Defense = true;
                 timer = 0;
