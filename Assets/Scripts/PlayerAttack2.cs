@@ -17,6 +17,7 @@ public class PlayerAttack2 : MonoBehaviour
     public CircleCollider2D HitArea;
     public bool Sprint = false;
     public bool Hitting = false;
+    public bool Defense = false;
 
     void Start()
     {
@@ -80,6 +81,13 @@ public class PlayerAttack2 : MonoBehaviour
             playerMovement.jumpForce = 5f;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter9)
+        {
+            PlayerHealth1.Meleedamage = 10;
+            PlayerHealth1.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter10)
         {
             PlayerHealth1.Meleedamage = 10;
             PlayerHealth1.Shotdamage = 10;

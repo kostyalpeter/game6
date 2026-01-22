@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ public class PlayerAttack1 : MonoBehaviour
     public bool canHit1 = false;
     public CircleCollider2D HitArea;
     public bool Sprint = false;
+    public bool Defense = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -87,6 +89,13 @@ public class PlayerAttack1 : MonoBehaviour
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
     }
     void Update()
     {
@@ -101,6 +110,11 @@ public class PlayerAttack1 : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             animator.SetTrigger("Attack");
+            if(player.playerType != PlayerType.PlayerTypes.Charachter10)
+            {
+                Defense = true;
+                timer = 0;
+            }
         }
         if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
@@ -158,6 +172,10 @@ public class PlayerAttack1 : MonoBehaviour
         {
             timer = 0;
             playerMovement.moveSpeed = 7f;
+        }
+        if (timer >= 1)
+        {
+            Defense = false;
         }
     }
     public void SpawnArrow()
