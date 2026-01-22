@@ -73,6 +73,20 @@ public class PlayerAttack1 : MonoBehaviour
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
         }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter8)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter9)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 10;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+        }
     }
     void Update()
     {
@@ -98,7 +112,7 @@ public class PlayerAttack1 : MonoBehaviour
             animator.SetTrigger("Attack");
             canHit1 = true;
         }
-        if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
+        if (Keyboard.current.cKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
         {
             canHit1 = true;
             animator.SetTrigger("Attack2");
