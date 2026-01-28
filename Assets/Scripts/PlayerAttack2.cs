@@ -30,83 +30,96 @@ public class PlayerAttack2 : MonoBehaviour
             PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
+            PlayerHealth2.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            // PlayerHealth1.Meleedamage = 10;
+            PlayerHealth1.Shotdamage = 25;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
+            PlayerHealth2.maxHealth = 220;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            PlayerHealth1.Meleedamage = 10;
+            PlayerHealth1.Shotdamage = 30;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 230;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter4)
         {
             PlayerHealth1.Meleedamage = 10;
             PlayerHealth1.Shotdamage = 20;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
-        }
-        if (player.playerType == PlayerType.PlayerTypes.Charachter4)
-        {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
-            playerMovement.moveSpeed = 6f;
-            playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter5)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 25;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
             PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Shotdamage = 25;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 210;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter7)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter8)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            PlayerHealth1.Shotdamage = 25;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter9)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 190;
+
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter10)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter11)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter12)
         {
-            PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Meleedamage = 15;
+            // PlayerHealth1.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth2.maxHealth = 200;
         }
     }
     void Update()

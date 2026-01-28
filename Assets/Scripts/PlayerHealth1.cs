@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth1 : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public static int maxHealth;
     public static int currentHealth;
     public static int Meleedamage;
     public static int Shotdamage;

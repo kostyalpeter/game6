@@ -27,86 +27,98 @@ public class PlayerAttack1 : MonoBehaviour
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Shotdamage = 20;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
+            PlayerHealth1.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter2)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            // PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 25;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
+            PlayerHealth1.maxHealth = 220;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Shotdamage = 30;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 230;
+        }
+        if (player.playerType == PlayerType.PlayerTypes.Charachter4)
         {
             PlayerHealth2.Meleedamage = 10;
             PlayerHealth2.Shotdamage = 20;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
-        }
-        if (player.playerType == PlayerType.PlayerTypes.Charachter4)
-        {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
-            playerMovement.moveSpeed = 6f;
-            playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter5)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 25;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
             PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Shotdamage = 25;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 210;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter7)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter8)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            PlayerHealth2.Shotdamage = 25;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 180;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter9)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 190;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter10)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter11)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter12)
         {
-            PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 10;
+            PlayerHealth2.Meleedamage = 15;
+            // PlayerHealth2.Shotdamage = 10;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
+            PlayerHealth1.maxHealth = 200;
         }
     }
     void Update()
@@ -122,7 +134,7 @@ public class PlayerAttack1 : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && CoolDown1 == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             animator.SetTrigger("Attack");
-            if(player.playerType == PlayerType.PlayerTypes.Charachter10)
+            if (player.playerType == PlayerType.PlayerTypes.Charachter10)
             {
                 Defense = true;
                 timer = 0;
@@ -259,7 +271,7 @@ public class PlayerAttack1 : MonoBehaviour
     }
     public void Heal()
     {
-        if(timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter7 && PlayerHealth1.currentHealth != 100)
+        if (timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter7 && PlayerHealth1.currentHealth != 100)
         {
             PlayerHealth1.currentHealth += 20;
             timer = 0;
