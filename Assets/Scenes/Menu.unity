@@ -373,7 +373,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 843906767}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
-        m_MethodName: Choose
+        m_MethodName: Choose1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

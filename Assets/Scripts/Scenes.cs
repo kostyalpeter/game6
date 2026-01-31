@@ -17,10 +17,17 @@ public class Scenes : MonoBehaviour
     }
     public void Game()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Choose");
     }
-    public void Choose()
+    public void Choose1()
     {
         SceneManager.LoadScene("Choose");
+    }
+    public void Play()
+    {
+        if (Choose.Player1 != 0 && Choose.Player2 != 0 && Choose.Map != 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 }
