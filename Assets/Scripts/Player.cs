@@ -3,6 +3,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    public TMP_Text Text;
     public TMP_Text Health;
     public TMP_Text Attack1;
     public TMP_Text Attack2;
@@ -10,6 +11,21 @@ public class Player : MonoBehaviour
     public TMP_Text Attack2Skill;
     public TMP_Text Difficulty;
     public static int Anim;
+    public GameObject AnimObject;
+    void Start()
+    {
+        Anim = 0;
+        AnimObject.SetActive(false);
+        Text.gameObject.SetActive(false);
+    }
+    void Update()
+    {
+        if (Anim > 0)
+        {
+            AnimObject.SetActive(true);
+            Text.gameObject.SetActive(true);
+        }
+    }
     public void Player1()
     {
         Health.text = "200";
