@@ -11,6 +11,7 @@ public class PlayerHealth1 : MonoBehaviour
     Animator animator;
     PlayerAttack1 playerAttack1;
     PlayerType player;
+    Timer timer;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerHealth1 : MonoBehaviour
         Health.maxValue = maxHealth;
         Health.value = currentHealth;
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             animator.SetTrigger("Die");
         }

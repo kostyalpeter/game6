@@ -42,7 +42,7 @@ public class PlayerAttack1 : MonoBehaviour
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            PlayerHealth2.Meleedamage = 10;
+            PlayerHealth2.Meleedamage = 181;
             PlayerHealth2.Shotdamage = 30;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
