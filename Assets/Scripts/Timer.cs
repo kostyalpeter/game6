@@ -12,16 +12,25 @@ public class Timer : MonoBehaviour
     public TMP_Text Player2Text;
     public static int Player1;
     public static int Player2;
-    bool canAdd = true;
+    bool canAdd;
     public int Timing;
     bool newGame;
+    WinMusic winMusic;
 
 
     void Start()
     {
+        if (Player1 == 0 && Player2 == 0)
+        {
+            newGame = true;
+            Timing = 2;
+        }
+        else
+        {
+            newGame = false;
+        }
         canCount = true;
-        // canAdd = true;
-        Timing = 1;
+        StartCoroutine(Wait2());
     }
 
     void Update()
@@ -55,6 +64,8 @@ public class Timer : MonoBehaviour
 
     void AddPoint()
     {
+        //Time finished
+
         Time.timeScale = 1f;
 
         if (PlayerHealth1.currentHealth > PlayerHealth2.currentHealth && canAdd == true)
@@ -63,6 +74,7 @@ public class Timer : MonoBehaviour
             Debug.Log("Player 1 Won");
             canAdd = false;
             StartCoroutine(Wait());
+            Timing -= 1;
         }
         if (PlayerHealth2.currentHealth > PlayerHealth1.currentHealth && canAdd == true)
         {
@@ -70,15 +82,19 @@ public class Timer : MonoBehaviour
             Debug.Log("Player 2 Won");
             canAdd = false;
             StartCoroutine(Wait());
+            Timing -= 1;
         }
         if (PlayerHealth2.currentHealth == PlayerHealth1.currentHealth)
         {
             Debug.Log("Tie");
             StartCoroutine(Wait());
+            Timing -= 1;
         }
     }
     public void Win1()
     {
+        //Normal end
+
         if (PlayerHealth2.currentHealth <= 0 && canAdd == true)
         {
             Player1 += 1;
@@ -106,7 +122,21 @@ public class Timer : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene("Game");
+        if (Timing > 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
+        else
+        {
+            SceneManager.LoadScene("Choose");
+        }
         canCount = true;
+        winMusic.Randomize();
+        winMusic.PlaySong();    
+    }
+    IEnumerator Wait2()
+    {
+        yield return new WaitForSeconds(1f);
+        canAdd = true;
     }
 }
