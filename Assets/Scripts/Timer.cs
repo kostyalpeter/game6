@@ -13,13 +13,14 @@ public class Timer : MonoBehaviour
     public static int Player1;
     public static int Player2;
     bool canAdd;
-    public int Timing;
+    public static int Timing;
     bool newGame;
     WinMusic winMusic;
 
 
     void Start()
     {
+        winMusic = GetComponent<WinMusic>();
         if (Player1 == 0 && Player2 == 0)
         {
             newGame = true;
@@ -104,6 +105,8 @@ public class Timer : MonoBehaviour
             Timing -= 1;
             StartCoroutine(Wait());
             PlayerHealth2.currentHealth += 1;
+            winMusic.Randomize();
+            winMusic.PlaySong();
         }
     }
     public void Win2()
@@ -131,8 +134,6 @@ public class Timer : MonoBehaviour
             SceneManager.LoadScene("Choose");
         }
         canCount = true;
-        winMusic.Randomize();
-        winMusic.PlaySong();    
     }
     IEnumerator Wait2()
     {
