@@ -132,75 +132,127 @@ public class PlayerAttack2 : MonoBehaviour
         {
             CoolDown = true;
         }
-        if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
+        if (Change.onKeys == false)
         {
-            animator.SetTrigger("Attack");
-            if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+            if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
             {
-                Defense = true;
+                animator.SetTrigger("Attack");
+                if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+                {
+                    Defense = true;
+                    timer = 0;
+                }
+            }
+            if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            {
+                animator.SetTrigger("Attack");
+                canHit = true;
+            }
+            if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
+            {
+                animator.SetTrigger("Attack");
+                canHit = true;
+            }
+            if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
+            {
+                canHit = true;
+                animator.SetTrigger("Attack2");
+            }
+            if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            {
+                if (timer >= 14)
+                {
+                    animator.SetTrigger("Attack2");
+                    canHit = true;
+                    Sprint = true;
+                }
+            }
+            if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
+            {
+                if (timer >= 14)
+                {
+                    animator.SetTrigger("Attack2");
+                    canHit = true;
+                    Sprint = true;
+                }
+            }
+            if (Keyboard.current.periodKey.wasReleasedThisFrame)
+            {
+                canHit = false;
+            }
+            else if (Change.onKeys == true)
+            {
+                if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
+                {
+                    animator.SetTrigger("Attack");
+                    if (player.playerType == PlayerType.PlayerTypes.Charachter10)
+                    {
+                        Defense = true;
+                        timer = 0;
+                    }
+                }
+                if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+                {
+                    animator.SetTrigger("Attack");
+                    canHit = true;
+                }
+                if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
+                {
+                    animator.SetTrigger("Attack");
+                    canHit = true;
+                }
+                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
+                {
+                    canHit = true;
+                    animator.SetTrigger("Attack2");
+                }
+                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
+                {
+                    if (timer >= 14)
+                    {
+                        animator.SetTrigger("Attack2");
+                        canHit = true;
+                        Sprint = true;
+                    }
+                }
+                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
+                {
+                    if (timer >= 14)
+                    {
+                        animator.SetTrigger("Attack2");
+                        canHit = true;
+                        Sprint = true;
+                    }
+                }
+                if (Keyboard.current.numpad2Key.wasReleasedThisFrame)
+                {
+                    canHit = false;
+                }
+            }
+            if (timer >= 3)
+            {
+                Reverse.reverse = false;
+            }
+            if (timer >= 4 && playerMovement.moveSpeed == 7f)
+            {
+                animator.SetTrigger("Stop");
+                playerMovement.moveSpeed = 6f;
+                Sprint = false;
+            }
+            if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            {
                 timer = 0;
+                playerMovement.moveSpeed = 7f;
             }
-        }
-        if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
-        {
-            animator.SetTrigger("Attack");
-            canHit = true;
-        }
-        if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
-        {
-            animator.SetTrigger("Attack");
-            canHit = true;
-        }
-        if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
-        {
-            canHit = true;
-            animator.SetTrigger("Attack2");
-        }
-        if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
-        {
-            if (timer >= 14)
+            if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter6)
             {
-                animator.SetTrigger("Attack2");
-                canHit = true;
-                Sprint = true;
+                timer = 0;
+                playerMovement.moveSpeed = 7f;
             }
-        }
-        if (Keyboard.current.periodKey.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
-        {
-            if (timer >= 14)
+            if (timer >= 1)
             {
-                animator.SetTrigger("Attack2");
-                canHit = true;
-                Sprint = true;
+                Defense = false;
             }
-        }
-        if (Keyboard.current.periodKey.wasReleasedThisFrame)
-        {
-            canHit = false;
-        }
-        if (timer >= 3)
-        {
-            Reverse.reverse = false;
-        }
-        if (timer >= 4 && playerMovement.moveSpeed == 7f)
-        {
-            animator.SetTrigger("Stop");
-            playerMovement.moveSpeed = 6f;
-            Sprint = false;
-        }
-        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
-        {
-            timer = 0;
-            playerMovement.moveSpeed = 7f;
-        }
-        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter6)
-        {
-            timer = 0;
-            playerMovement.moveSpeed = 7f;
-        }
-        if (timer >= 1)
-        {
-            Defense = false;
         }
     }
     public void SpawnArrow()

@@ -22,29 +22,59 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.iKey.wasPressedThisFrame && isGrounded)
+        if (Change.onKeys == false)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            animator.SetTrigger("Jump");
+            if (Keyboard.current.iKey.wasPressedThisFrame && isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                animator.SetTrigger("Jump");
+            }
+            horizontalInput = Keyboard.current.jKey.isPressed ? -1 : Keyboard.current.lKey.isPressed ? 1 : 0;
+            if (Keyboard.current.jKey.isPressed)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            if (Keyboard.current.lKey.isPressed)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            if (Keyboard.current.jKey.wasReleasedThisFrame)
+            {
+                animator.SetBool("isWalking", false);
+            }
+            if (Keyboard.current.lKey.wasReleasedThisFrame)
+            {
+                animator.SetBool("isWalking", false);
+            }
+
+            if (Change.onKeys == true)
+            {
+                if (Keyboard.current.upArrowKey.wasPressedThisFrame && isGrounded)
+                {
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    animator.SetTrigger("Jump");
+                }
+                horizontalInput = Keyboard.current.jKey.isPressed ? -1 : Keyboard.current.lKey.isPressed ? 1 : 0;
+                if (Keyboard.current.leftArrowKey.isPressed)
+                {
+                    animator.SetBool("isWalking", true);
+                }
+                if (Keyboard.current.rightArrowKey.isPressed)
+                {
+                    animator.SetBool("isWalking", true);
+                }
+                if (Keyboard.current.leftArrowKey.wasReleasedThisFrame)
+                {
+                    animator.SetBool("isWalking", false);
+                }
+                if (Keyboard.current.rightArrowKey.wasReleasedThisFrame)
+                {
+                    animator.SetBool("isWalking", false);
+                }
+
+            }
+            FlipSprite();
         }
-        horizontalInput = Keyboard.current.jKey.isPressed ? -1 : Keyboard.current.lKey.isPressed ? 1 : 0;
-        if (Keyboard.current.jKey.isPressed)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        if (Keyboard.current.lKey.isPressed)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        if (Keyboard.current.jKey.wasReleasedThisFrame)
-        {
-            animator.SetBool("isWalking", false);
-        }
-        if (Keyboard.current.lKey.wasReleasedThisFrame)
-        {
-            animator.SetBool("isWalking", false);
-        }
-        FlipSprite();
     }
 
     private void FixedUpdate()
