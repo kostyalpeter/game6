@@ -5,6 +5,7 @@ public class Choose : MonoBehaviour
     public static int Player1;
     public static int Player2;
     public static int Map;
+
     public void Random1()
     {
         Player1 = Random.Range(1, 13);

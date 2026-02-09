@@ -315,12 +315,12 @@ public class PlayerAttack2 : MonoBehaviour
     {
         if (Sprint == true && other.GetComponent<PlayerHealth1>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            other.gameObject.GetComponent<PlayerHealth1>().MeleeDamage();
+            other.gameObject.GetComponent<PlayerHealth1>().ShotDamage();
             timer = 4;
         }
         if (Sprint == true && other.GetComponent<PlayerHealth1>() && player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
-            other.gameObject.GetComponent<PlayerHealth1>().MeleeDamage();
+            other.gameObject.GetComponent<PlayerHealth1>().ShotDamage();
             timer = 4;
         }
     }

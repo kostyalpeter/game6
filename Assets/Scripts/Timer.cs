@@ -62,7 +62,6 @@ public class Timer : MonoBehaviour
         //     SceneManager.LoadScene("Choose");
         // }
     }
-
     void AddPoint()
     {
         //Time finished

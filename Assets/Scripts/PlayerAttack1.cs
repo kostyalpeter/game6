@@ -27,7 +27,7 @@ public class PlayerAttack1 : MonoBehaviour
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 20;
+            PlayerHealth2.Shotdamage = 200;
             playerMovement.moveSpeed = 5f;
             playerMovement.jumpForce = 7f;
             PlayerHealth1.maxHealth = 200;
@@ -260,12 +260,12 @@ public class PlayerAttack1 : MonoBehaviour
     {
         if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter3)
         {
-            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            other.gameObject.GetComponent<PlayerHealth2>().ShotDamage();
             timer = 4;
         }
         if (Sprint == true && other.GetComponent<PlayerHealth2>() && player.playerType == PlayerType.PlayerTypes.Charachter6)
         {
-            other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
+            other.gameObject.GetComponent<PlayerHealth2>().ShotDamage();
             timer = 4;
         }
     }

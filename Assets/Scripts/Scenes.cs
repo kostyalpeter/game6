@@ -30,4 +30,11 @@ public class Scenes : MonoBehaviour
             SceneManager.LoadScene("Game");
         }
     }
+
+    public void SetNull()
+    {
+        Timer.Player1 = 0;
+        Timer.Player2 = 0;
+    }
+
 }

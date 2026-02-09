@@ -9,6 +9,7 @@ public class WinMusic : MonoBehaviour
     public AudioClip Song5;
     public AudioSource Src;
     public int RandomSong;
+    StartSound start;
 
     public void Randomize()
     {
@@ -17,30 +18,35 @@ public class WinMusic : MonoBehaviour
     }
     public void PlaySong()
     {
-        if (RandomSong == 1)
+        start.SongManager.SetActive(false);
+        if (Sound.Check1 == true)
         {
-            Src.clip = Song1;
-            Src.Play();
+            if (RandomSong == 1)
+            {
+                Src.clip = Song1;
+                Src.Play();
+            }
+            if (RandomSong == 2)
+            {
+                Src.clip = Song2;
+                Src.Play();
+            }
+            if (RandomSong == 3)
+            {
+                Src.clip = Song3;
+                Src.Play();
+            }
+            if (RandomSong == 4)
+            {
+                Src.clip = Song4;
+                Src.Play();
+            }
+            if (RandomSong == 5)
+            {
+                Src.clip = Song5;
+                Src.Play();
+            }
         }
-        if (RandomSong == 2)
-        {
-            Src.clip = Song2;
-            Src.Play();
-        }
-        if (RandomSong == 3)
-        {
-            Src.clip = Song3;
-            Src.Play();
-        }
-        if (RandomSong == 4)
-        {
-            Src.clip = Song4;
-            Src.Play();
-        }
-        if (RandomSong == 5)
-        {
-            Src.clip = Song5;
-            Src.Play();
-        }
+        else { }
     }
 }

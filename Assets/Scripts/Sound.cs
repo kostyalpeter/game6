@@ -12,16 +12,17 @@ public class Sound : MonoBehaviour
     public GameObject CheckMark1;
     public GameObject CheckMark2;
     public GameObject CheckMark3;
-    public bool Check1;
-    public bool Check2;
-    public bool Check3;
+    public static bool Check1;
+    public static bool Check2;
+    public static bool Check3;
 
     public void Start()
     {
-        Check1 = true;
-        Check2 = true;
-        Check3 = true;
-        Src.PlayOneShot(Click);
+        if (Check2 == true)
+        {
+            Src.PlayOneShot(Click);
+        }
+        else { }
     }
 
     void Update()
@@ -34,11 +35,30 @@ public class Sound : MonoBehaviour
         {
             CheckMark1.SetActive(false);
         }
-
+        if (Check2 == true)
+        {
+            CheckMark2.SetActive(true);
+        }
+        if (Check2 == false)
+        {
+            CheckMark2.SetActive(false);
+        }
+        if (Check3 == true)
+        {
+            CheckMark3.SetActive(true);
+        }
+        if (Check3 == false)
+        {
+            CheckMark3.SetActive(false);
+        }
     }
     public void ClickSound()
     {
-        Src.PlayOneShot(Click);
+        if (Check2 == true)
+        {
+            Src.PlayOneShot(Click);
+        }
+        else { }
     }
     public void Interact1()
     {
@@ -46,7 +66,7 @@ public class Sound : MonoBehaviour
         {
             Check1 = false;
         }
-        if (Check1 == false)
+        else if (Check1 == false)
         {
             Check1 = true;
         }
@@ -55,12 +75,10 @@ public class Sound : MonoBehaviour
     {
         if (Check2 == true)
         {
-            CheckMark2.SetActive(false);
             Check2 = false;
         }
-        if (Check2 == false)
+        else if (Check2 == false)
         {
-            CheckMark2.SetActive(true);
             Check2 = true;
         }
     }
@@ -68,26 +86,11 @@ public class Sound : MonoBehaviour
     {
         if (Check3 == true)
         {
-            CheckMark3.SetActive(false);
             Check3 = false;
         }
-        if (Check3 == false)
+        else if (Check3 == false)
         {
-            CheckMark3.SetActive(true);
             Check3 = true;
         }
     }
-
-    // IEnumerator Wait1()
-    // {
-    //     yield return new WaitForSeconds(1f);
-    //     if (Check1 == true)
-    //     {
-    //         CheckMark1.SetActive(false);
-    //     }
-    //     if (Check1 == false)
-    //     {
-    //         CheckMark1.SetActive(true);
-    //     }
-    // }
 }
