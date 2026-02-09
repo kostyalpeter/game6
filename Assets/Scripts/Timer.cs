@@ -6,7 +6,7 @@ using System.Collections;
 public class Timer : MonoBehaviour
 {
     public TMP_Text TimerText;
-    float TimeLeft = 100;
+    float TimeLeft = 180;
     bool canCount = false;
     public TMP_Text Player1Text;
     public TMP_Text Player2Text;
