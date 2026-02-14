@@ -2149,6 +2149,7 @@ MonoBehaviour:
   HitArea: {fileID: 786341365}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!58 &786341365
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2833,6 +2834,7 @@ MonoBehaviour:
   HitArea: {fileID: 969147014}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!50 &969147011
 Rigidbody2D:
   serializedVersion: 5
@@ -3471,6 +3473,7 @@ MonoBehaviour:
   HitArea: {fileID: 1166986643}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!212 &1166986639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4162,6 +4165,7 @@ MonoBehaviour:
   HitArea: {fileID: 0}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!212 &1246847512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6666,6 +6670,7 @@ MonoBehaviour:
   HitArea: {fileID: 1578218094}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!50 &1578218089
 Rigidbody2D:
   serializedVersion: 5
@@ -6992,6 +6997,7 @@ MonoBehaviour:
   HitArea: {fileID: 1614090918}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!50 &1614090923
 Rigidbody2D:
   serializedVersion: 5
@@ -7280,6 +7286,7 @@ MonoBehaviour:
   HitArea: {fileID: 1622991426}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 245617762}
 --- !u!58 &1622991426
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8203,6 +8210,7 @@ MonoBehaviour:
   HitArea: {fileID: 1746720797}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!212 &1746720795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8786,6 +8794,7 @@ MonoBehaviour:
   HitArea: {fileID: 1805749733}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!58 &1805749733
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9107,6 +9116,7 @@ MonoBehaviour:
   HitArea: {fileID: 1931453598}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!212 &1931453593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9541,6 +9551,7 @@ MonoBehaviour:
   HitArea: {fileID: 2036419486}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!114 &2036419485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9848,6 +9859,7 @@ MonoBehaviour:
   HitArea: {fileID: 2064870786}
   Sprint: 0
   Defense: 0
+  HitBox: {fileID: 0}
 --- !u!212 &2064870792
 SpriteRenderer:
   m_ObjectHideFlags: 0

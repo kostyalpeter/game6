@@ -17,6 +17,7 @@ public class PlayerAttack1 : MonoBehaviour
     public CircleCollider2D HitArea;
     public bool Sprint = false;
     public bool Defense = false;
+    public BoxCollider2D HitBox;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -225,7 +226,7 @@ public class PlayerAttack1 : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
+        if (HitArea == HitBox && other.GetComponent<PlayerHealth2>() && canHit1 == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             other.gameObject.GetComponent<PlayerHealth2>().MeleeDamage();
             timer = 0;

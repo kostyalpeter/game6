@@ -12,6 +12,7 @@ public class PlayerHealth2 : MonoBehaviour
     PlayerAttack2 playerAttack2;
     PlayerType player;
     Timer timer;
+    PlayerType playerType;
 
     void Start()
     {

@@ -6,11 +6,11 @@ public class Border : MonoBehaviour
     {
         if (gameObject.CompareTag("Player1") && other.CompareTag("Border"))
         {
-            PlayerHealth1.currentHealth -= 100;
+            PlayerHealth1.currentHealth -= 1000;
         }
         if (gameObject.CompareTag("Player2") && other.CompareTag("Border"))
         {
-            PlayerHealth2.currentHealth -= 100;
+            PlayerHealth2.currentHealth -= 1000;
         }
     }
 }
