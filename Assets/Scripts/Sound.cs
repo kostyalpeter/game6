@@ -1,5 +1,3 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Sound : MonoBehaviour
@@ -12,9 +10,9 @@ public class Sound : MonoBehaviour
     public GameObject CheckMark1;
     public GameObject CheckMark2;
     public GameObject CheckMark3;
-    public static bool Check1;
-    public static bool Check2;
-    public static bool Check3;
+    public static bool Check1 = true;
+    public static bool Check2 = true;
+    public static bool Check3 = true;
 
     public void Start()
     {
@@ -66,7 +64,7 @@ public class Sound : MonoBehaviour
         {
             Check1 = false;
         }
-        else if (Check1 == false)
+        else
         {
             Check1 = true;
         }

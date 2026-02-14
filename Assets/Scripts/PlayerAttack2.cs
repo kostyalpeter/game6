@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerAttack2 : MonoBehaviour
@@ -28,16 +27,16 @@ public class PlayerAttack2 : MonoBehaviour
         {
             PlayerHealth1.Meleedamage = 10;
             PlayerHealth1.Shotdamage = 10;
-            playerMovement.moveSpeed = 5f;
-            playerMovement.jumpForce = 7f;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
             PlayerHealth2.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             // PlayerHealth1.Meleedamage = 10;
             PlayerHealth1.Shotdamage = 25;
-            playerMovement.moveSpeed = 5f;
-            playerMovement.jumpForce = 7f;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
             PlayerHealth2.maxHealth = 220;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter3)

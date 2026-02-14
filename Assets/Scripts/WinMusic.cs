@@ -18,33 +18,37 @@ public class WinMusic : MonoBehaviour
     }
     public void PlaySong()
     {
-        start.SongManager.SetActive(false);
         if (Sound.Check1 == true)
         {
             if (RandomSong == 1)
             {
                 Src.clip = Song1;
                 Src.Play();
+                start.SongManager.SetActive(false);
             }
             if (RandomSong == 2)
             {
                 Src.clip = Song2;
                 Src.Play();
+                start.SongManager.SetActive(false);
             }
             if (RandomSong == 3)
             {
                 Src.clip = Song3;
                 Src.Play();
+                start.SongManager.SetActive(false);
             }
             if (RandomSong == 4)
             {
                 Src.clip = Song4;
                 Src.Play();
+                start.SongManager.SetActive(false);
             }
             if (RandomSong == 5)
             {
                 Src.clip = Song5;
                 Src.Play();
+                start.SongManager.SetActive(false);
             }
         }
         else { }

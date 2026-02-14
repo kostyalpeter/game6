@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         if (Player1 == 0 && Player2 == 0)
         {
             newGame = true;
-            Timing = 2;
+            Timing = 10;
         }
         else
         {

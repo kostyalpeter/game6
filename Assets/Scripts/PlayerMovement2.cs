@@ -1,8 +1,5 @@
-using Unity.Collections;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 public class PlayerMovement2 : MonoBehaviour
 {
     public float horizontalInput;
@@ -54,7 +51,7 @@ public class PlayerMovement2 : MonoBehaviour
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     animator.SetTrigger("Jump");
                 }
-                horizontalInput = Keyboard.current.jKey.isPressed ? -1 : Keyboard.current.lKey.isPressed ? 1 : 0;
+                horizontalInput = Keyboard.current.rightArrowKey.isPressed ? -1 : Keyboard.current.leftArrowKey.isPressed ? 1 : 0;
                 if (Keyboard.current.leftArrowKey.isPressed)
                 {
                     animator.SetBool("isWalking", true);

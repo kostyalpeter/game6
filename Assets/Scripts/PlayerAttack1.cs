@@ -27,17 +27,17 @@ public class PlayerAttack1 : MonoBehaviour
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             PlayerHealth2.Meleedamage = 10;
-            PlayerHealth2.Shotdamage = 200;
-            playerMovement.moveSpeed = 5f;
-            playerMovement.jumpForce = 7f;
+            PlayerHealth2.Shotdamage = 20;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
             PlayerHealth1.maxHealth = 200;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter2)
         {
             // PlayerHealth2.Meleedamage = 10;
             PlayerHealth2.Shotdamage = 25;
-            playerMovement.moveSpeed = 5f;
-            playerMovement.jumpForce = 7f;
+            playerMovement.moveSpeed = 6f;
+            playerMovement.jumpForce = 5f;
             PlayerHealth1.maxHealth = 220;
         }
         if (player.playerType == PlayerType.PlayerTypes.Charachter3)
