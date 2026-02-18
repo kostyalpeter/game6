@@ -131,6 +131,7 @@ public class Timer : MonoBehaviour
         else
         {
             SceneManager.LoadScene("Choose");
+            Timing = 10;
         }
         canCount = true;
     }

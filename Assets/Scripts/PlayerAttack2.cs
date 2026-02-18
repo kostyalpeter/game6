@@ -277,6 +277,8 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D other)
     {
+        if (other.isTrigger) return;
+
         if (other.GetComponent<PlayerHealth1>() && canHit == true && timer >= 1 && player.playerType != PlayerType.PlayerTypes.Charachter2 && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
         {
             other.gameObject.GetComponent<PlayerHealth1>().MeleeDamage();
