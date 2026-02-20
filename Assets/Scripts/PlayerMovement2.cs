@@ -44,34 +44,35 @@ public class PlayerMovement2 : MonoBehaviour
                 animator.SetBool("isWalking", false);
             }
 
-            if (Change.onKeys == true)
-            {
-                if (Keyboard.current.upArrowKey.wasPressedThisFrame && isGrounded)
-                {
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                    animator.SetTrigger("Jump");
-                }
-                horizontalInput = Keyboard.current.rightArrowKey.isPressed ? -1 : Keyboard.current.leftArrowKey.isPressed ? 1 : 0;
-                if (Keyboard.current.leftArrowKey.isPressed)
-                {
-                    animator.SetBool("isWalking", true);
-                }
-                if (Keyboard.current.rightArrowKey.isPressed)
-                {
-                    animator.SetBool("isWalking", true);
-                }
-                if (Keyboard.current.leftArrowKey.wasReleasedThisFrame)
-                {
-                    animator.SetBool("isWalking", false);
-                }
-                if (Keyboard.current.rightArrowKey.wasReleasedThisFrame)
-                {
-                    animator.SetBool("isWalking", false);
-                }
-
-            }
-            FlipSprite();
         }
+        if (Change.onKeys == true)
+        {
+            if (Keyboard.current.upArrowKey.wasPressedThisFrame && isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                animator.SetTrigger("Jump");
+            }
+            horizontalInput = Keyboard.current.rightArrowKey.isPressed ? 1 : Keyboard.current.leftArrowKey.isPressed ? -1 : 0;
+            if (Keyboard.current.leftArrowKey.isPressed)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            if (Keyboard.current.rightArrowKey.isPressed)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            if (Keyboard.current.leftArrowKey.wasReleasedThisFrame)
+            {
+                animator.SetBool("isWalking", false);
+            }
+            if (Keyboard.current.rightArrowKey.wasReleasedThisFrame)
+            {
+                animator.SetBool("isWalking", false);
+            }
+
+        }
+        FlipSprite();
+
     }
 
     private void FixedUpdate()

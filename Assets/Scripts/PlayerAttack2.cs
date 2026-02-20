@@ -26,7 +26,7 @@ public class PlayerAttack2 : MonoBehaviour
         if (player.playerType == PlayerType.PlayerTypes.Charachter1)
         {
             PlayerHealth1.Meleedamage = 10;
-            PlayerHealth1.Shotdamage = 10;
+            PlayerHealth1.Shotdamage = 20;
             playerMovement.moveSpeed = 6f;
             playerMovement.jumpForce = 5f;
             PlayerHealth2.maxHealth = 200;
@@ -179,81 +179,82 @@ public class PlayerAttack2 : MonoBehaviour
             {
                 canHit = false;
             }
-            else if (Change.onKeys == true)
+        }
+        else if (Change.onKeys == true)
+        {
+            if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
             {
-                if (Keyboard.current.oKey.wasPressedThisFrame && CoolDown == true && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6)
+                animator.SetTrigger("Attack");
+                if (player.playerType == PlayerType.PlayerTypes.Charachter10)
                 {
-                    animator.SetTrigger("Attack");
-                    if (player.playerType == PlayerType.PlayerTypes.Charachter10)
-                    {
-                        Defense = true;
-                        timer = 0;
-                    }
+                    Defense = true;
+                    timer = 0;
                 }
-                if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            }
+            if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            {
+                animator.SetTrigger("Attack");
+                canHit = true;
+            }
+            if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
+            {
+                animator.SetTrigger("Attack");
+                canHit = true;
+            }
+            if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
+            {
+                canHit = true;
+                animator.SetTrigger("Attack2");
+            }
+            if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            {
+                if (timer >= 14)
                 {
-                    animator.SetTrigger("Attack");
-                    canHit = true;
-                }
-                if (Keyboard.current.numpad1Key.wasPressedThisFrame && CoolDown == true && player.playerType == PlayerType.PlayerTypes.Charachter6)
-                {
-                    animator.SetTrigger("Attack");
-                    canHit = true;
-                }
-                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType != PlayerType.PlayerTypes.Charachter3 && player.playerType != PlayerType.PlayerTypes.Charachter6 && timer >= 1)
-                {
-                    canHit = true;
                     animator.SetTrigger("Attack2");
+                    canHit = true;
+                    Sprint = true;
                 }
-                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter3)
+            }
+            if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
+            {
+                if (timer >= 14)
                 {
-                    if (timer >= 14)
-                    {
-                        animator.SetTrigger("Attack2");
-                        canHit = true;
-                        Sprint = true;
-                    }
-                }
-                if (Keyboard.current.numpad2Key.wasPressedThisFrame && player.playerType == PlayerType.PlayerTypes.Charachter6)
-                {
-                    if (timer >= 14)
-                    {
-                        animator.SetTrigger("Attack2");
-                        canHit = true;
-                        Sprint = true;
-                    }
-                }
-                if (Keyboard.current.numpad2Key.wasReleasedThisFrame)
-                {
-                    canHit = false;
+                    animator.SetTrigger("Attack2");
+                    canHit = true;
+                    Sprint = true;
                 }
             }
-            if (timer >= 3)
+            if (Keyboard.current.numpad2Key.wasReleasedThisFrame)
             {
-                Reverse.reverse = false;
-            }
-            if (timer >= 4 && playerMovement.moveSpeed == 7f)
-            {
-                animator.SetTrigger("Stop");
-                playerMovement.moveSpeed = 6f;
-                Sprint = false;
-            }
-            if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
-            {
-                timer = 0;
-                playerMovement.moveSpeed = 7f;
-            }
-            if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter6)
-            {
-                timer = 0;
-                playerMovement.moveSpeed = 7f;
-            }
-            if (timer >= 1)
-            {
-                Defense = false;
+                canHit = false;
             }
         }
+        if (timer >= 3)
+        {
+            Reverse.reverse = false;
+        }
+        if (timer >= 4 && playerMovement.moveSpeed == 7f)
+        {
+            animator.SetTrigger("Stop");
+            playerMovement.moveSpeed = 6f;
+            Sprint = false;
+        }
+        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter3)
+        {
+            timer = 0;
+            playerMovement.moveSpeed = 7f;
+        }
+        if (Sprint == true && timer >= 10 && player.playerType == PlayerType.PlayerTypes.Charachter6)
+        {
+            timer = 0;
+            playerMovement.moveSpeed = 7f;
+        }
+        if (timer >= 1)
+        {
+            Defense = false;
+        }
     }
+
     public void SpawnArrow()
     {
         Vector3 spawnPos;
